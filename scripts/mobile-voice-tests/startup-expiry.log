@@ -1,0 +1,3 @@
+INPUT phase=starting requestAge=181s hostStatusUnchanged=true
+OBSERVED label=正在激活麦克风… stopEnabled=false cancelEnabled=false launcherEnabled=true
+FAIL expired request retains misleading starting label indefinitely

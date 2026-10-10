@@ -1,0 +1,19 @@
+PASS nihao -> 你好
+PASS zhongguo -> 中国
+PASS continuous words -> longest 你好 prefix
+PASS prefix selection preserves zhongguo
+PASS residual -> 中国; composition empty
+PASS apostrophe xi'an -> 西安
+PASS apostrophe excludes xian single syllable
+PASS delete affects composition only
+PASS raw spelling commit resets composition
+PASS leading separator ignored
+PASS apostrophe prefix consumes boundary
+PASS unknown spelling commits raw
+PASS partial n has dictionary candidates
+PASS input boundary caps 65-letter query
+TESTS=14 PASS=14 elapsed_seconds=0.056
+PASS iOS UIKit source typecheck
+real 10.84
+user 2.34
+sys 2.44

@@ -1,0 +1,21 @@
+/var/folders/99/w2nz6xxd0w17ktv9cgzb2pfh0000gn/T//totype-mobile-keyboard-ui/KeyboardHarness.app: replacing existing signature
+com.peter.totype.keyboardharness: 68107
+PASS pinyin remains local before selection
+PASS candidate button inserts 你好
+PASS prefix candidate leaves composition
+PASS dictation flush commits residual 中国
+PASS delete composition does not delete document
+PASS empty composition forwards document delete
+PASS English letters insert immediately
+PASS shift uppercases one English letter
+PASS number and punctuation page inserts exact keys
+PASS symbol page inserts brackets and equals
+PASS space and return forward exact text
+PASS globe forwards next-keyboard callback
+PASS return flushes Chinese composition then newline
+PASS document change discards composition and candidates without insertion
+PASS keyboard height <= 260
+UI_TESTS=15 PASS=15
+real 119.52
+user 1.77
+sys 2.03

@@ -1,0 +1,8 @@
+FAIL repeat-cancel-idempotent-and-start-blocked-during-cleanup: duplicate cancel reached provider
+FAIL stale-start-cleanup-does-not-overwrite-new-generation: old start cleanup changed new phase
+FAIL stale-sender-cleanup-does-not-overwrite-new-generation: old sender cleanup changed new phase
+FAIL stale-finalize-cleanup-does-not-overwrite-new-generation: old finalize cleanup finished new bridge
+FAIL cancel-before-final-result-prevents-pending-publish: final result published despite persisted cancel
+PASS late-finalize-result-after-cancel-cannot-publish-or-change-new-session
+PASS persisted-cancel-blocks-completed-status-and-reloaded-bridge
+TESTS=7 PASS=2 FAIL=5

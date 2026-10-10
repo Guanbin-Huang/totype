@@ -1,0 +1,8 @@
+PASS repeat-cancel-idempotent-and-start-blocked-during-cleanup
+PASS stale-start-cleanup-does-not-overwrite-new-generation
+PASS stale-sender-cleanup-does-not-overwrite-new-generation
+PASS stale-finalize-cleanup-does-not-overwrite-new-generation
+PASS cancel-before-final-result-prevents-pending-publish
+PASS late-finalize-result-after-cancel-cannot-publish-or-change-new-session
+PASS persisted-cancel-blocks-completed-status-and-reloaded-bridge
+TESTS=7 PASS=7 FAIL=0

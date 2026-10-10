@@ -1,0 +1,87 @@
+name: ToTypeMobile
+options:
+  deploymentTarget:
+    iOS: '17.0'
+settings:
+  base:
+    DEVELOPMENT_TEAM: 3795RDY2Z7
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: '5.0'
+    TARGETED_DEVICE_FAMILY: '1'
+    MARKETING_VERSION: '0.1.0'
+    CURRENT_PROJECT_VERSION: '3'
+    GENERATE_INFOPLIST_FILE: NO
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+targets:
+  ToTypeMobile:
+    type: application
+    platform: iOS
+    sources:
+      - Host
+      - Shared
+      - ../VerbatimVoiceCore/Sources/VerbatimCore
+      - ../VerbatimVoice/Models/TranscriptionModels.swift
+      - ../VerbatimVoice/Providers/ASRProvider.swift
+      - ../VerbatimVoice/Providers/DoubaoASRProvider.swift
+      - ../VerbatimVoice/Audio/PCMConverter.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.peter.totype.ios
+        PRODUCT_NAME: ToTypeMobile
+        CODE_SIGN_ENTITLEMENTS: Host/ToTypeMobile.entitlements
+        OTHER_LDFLAGS: ['$(inherited)', '-lz']
+    info:
+      path: Host/Info.plist
+      properties:
+        CFBundleDisplayName: ToType
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSMicrophoneUsageDescription: 按下录音后使用麦克风，通过你配置的豆包服务进行转写。
+        UILaunchScreen: {}
+        UIBackgroundModes: [audio]
+        CFBundleURLTypes:
+          - CFBundleURLName: com.peter.totype.ios
+            CFBundleURLSchemes: [totype]
+        LSApplicationQueriesSchemes: [weixin, whatsapp, tg, mobilenotes, message, slack, discord]
+        UIFileSharingEnabled: NO
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+    dependencies:
+      - target: ToTypeKeyboard
+        embed: true
+  ToTypeKeyboard:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Keyboard
+      - Shared
+      - ../VerbatimVoiceCore/Sources/VerbatimCore/EditLearningPolicy.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.peter.totype.ios.keyboard
+        PRODUCT_NAME: ToTypeKeyboard
+        CODE_SIGN_ENTITLEMENTS: Keyboard/ToTypeKeyboard.entitlements
+        APPLICATION_EXTENSION_API_ONLY: YES
+        OTHER_LDFLAGS: ['$(inherited)', '-lsqlite3']
+        SWIFT_OBJC_BRIDGING_HEADER: Keyboard/ToTypeKeyboard-Bridging-Header.h
+        SKIP_INSTALL: YES
+    info:
+      path: Keyboard/Info.plist
+      properties:
+        CFBundleDisplayName: ToType
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.keyboard-service
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).KeyboardViewController
+          NSExtensionAttributes:
+            IsASCIICapable: YES
+            PrefersRightToLeft: NO
+            PrimaryLanguage: zh-Hans
+            RequestsOpenAccess: YES
+schemes:
+  ToTypeMobile:
+    build:
+      targets:
+        ToTypeMobile: all
+    run:
+      config: Debug
