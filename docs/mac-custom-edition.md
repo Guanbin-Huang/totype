@@ -10,6 +10,16 @@
 - 标准功能键字形 F11/F12、键盘音量语境下的明确同音误识别，以及中英混排保留。
 - 录音、历史、词库和凭据仍由本机应用管理，源码包不包含用户数据。
 
+## 使用的豆包模型规格
+
+| 用途 | 系列与规格 | API 模型 / 资源标识 |
+| --- | --- | --- |
+| 语音转写 | 豆包流式 ASR，异步流式接口 | `bigmodel`；`/api/v3/sauc/bigmodel_async`；资源 `volc.seedasr.sauc.duration` |
+| 简单短句整理 | Doubao Seed 2.0 Mini，260428 版本 | `doubao-seed-2-0-mini-260428` |
+| 复杂内容整理 | Doubao Seed 2.0 Lite，260428 版本 | `doubao-seed-2-0-lite-260428` |
+
+文字整理均关闭深度思考（`thinking.type=disabled`）。这里只注明服务与模型规格，API Key 由使用者自行配置，不随仓库发布。
+
 ## 构建与配置
 需要 Apple Silicon Mac、Xcode 与匹配 SDK。参考原 README 的安装流程。
 
